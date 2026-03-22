@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>SalaryOptima | Smart Tax & Salary Optimization</title>
+  <!-- Google Fonts & simple CSS reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fbfdfe;
+      color: #1a2c3e;
+      line-height: 1.4;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* header & nav */
+    header {
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(2px);
+      background: rgba(255,255,255,0.96);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1F6E8C, #2E8B57);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+    .logo i {
+      background: none;
+      color: #2E8B57;
+      margin-right: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #2c3e4e;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #1F6E8C;
+    }
+    .btn-outline {
+      border: 1.5px solid #1F6E8C;
+      padding: 8px 20px;
+      border-radius: 40px;
+      background: transparent;
+      font-weight: 600;
+    }
+    .btn-outline:hover {
+      background: #1F6E8C10;
+    }
+    .btn-primary {
+      background: #1F6E8C;
+      color: white;
+      padding: 8px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: 0.2s;
+      box-shadow: 0 4px 8px rgba(31,110,140,0.2);
+    }
+    .btn-primary:hover {
+      background: #0e5a74;
+      transform: translateY(-1px);
+    }
+
+    /* hero section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      padding: 70px 0 60px;
+      flex-wrap: wrap;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-badge {
+      background: #e0f2fe;
+      color: #1F6E8C;
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 {
+      font-size: 3.3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #0a2b3b;
+    }
+    .hero-content p {
+      font-size: 1.15rem;
+      color: #4a5b6b;
+      margin-bottom: 32px;
+      max-width: 90%;
+    }
+    .cta-group {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .btn-large {
+      padding: 14px 32px;
+      font-size: 1rem;
+    }
+    .hero-image {
+      flex: 1;
+      background: linear-gradient(145deg, #eef5f9, #ffffff);
+      border-radius: 40px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+    }
+    .hero-image i {
+      font-size: 180px;
+      color: #2E8B57;
+      opacity: 0.8;
+    }
+
+    /* features */
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      text-align: center;
+      color: #5a6e7c;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 36px;
+      margin: 40px 0 60px;
+    }
+    .feature-card {
+      background: white;
+      padding: 32px 24px;
+      border-radius: 32px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
+      transition: 0.25s ease;
+      border: 1px solid #eef2f5;
+      text-align: center;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -12px rgba(31,110,140,0.15);
+      border-color: #cbdde6;
+    }
+    .feature-icon {
+      font-size: 48px;
+      color: #1F6E8C;
+      margin-bottom: 24px;
+    }
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+    .feature-card p {
+      color: #4c5e6b;
+    }
+
+    /* about section */
+    .about-section {
+      background: #f5f9fc;
+      border-radius: 60px;
+      padding: 60px 40px;
+      margin: 60px 0;
+    }
+    .about-inner {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .about-text {
+      flex: 1;
+    }
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .about-text p {
+      margin-bottom: 16px;
+      color: #2c4b5e;
+    }
+    .about-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 28px;
+    }
+    .stat {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #1F6E8C;
+    }
+    .stat span {
+      font-size: 0.9rem;
+      font-weight: normal;
+      color: #4f6f7f;
+      display: block;
+    }
+    .about-image {
+      flex: 1;
+      text-align: center;
+    }
+    .about-image i {
+      font-size: 150px;
+      color: #2E8B57;
+    }
+
+    /* CTA banner */
+    .cta-banner {
+      background: linear-gradient(120deg, #0f3b45, #1F6E8C);
+      border-radius: 48px;
+      padding: 56px 40px;
+      text-align: center;
+      margin: 40px 0 70px;
+      color: white;
+    }
+    .cta-banner h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .cta-banner p {
+      max-width: 600px;
+      margin: 0 auto 28px;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    .btn-white {
+      background: white;
+      color: #1F6E8C;
+      padding: 14px 38px;
+      border-radius: 40px;
+      font-weight: 700;
+      display: inline-block;
+      transition: 0.2s;
+    }
+    .btn-white:hover {
+      transform: scale(1.02);
+      background: #f0f8ff;
+    }
+
+    /* footer */
+    footer {
+      border-top: 1px solid #e2e8f0;
+      padding: 48px 0 32px;
+      margin-top: 30px;
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .footer-col p {
+      color: #5b6f7e;
+      margin-top: 12px;
+    }
+    .footer-col h4 {
+      margin-bottom: 16px;
+    }
+    .social i {
+      font-size: 22px;
+      margin-right: 18px;
+      color: #3f6b7e;
+    }
+    .copyright {
+      text-align: center;
+      margin-top: 48px;
+      color: #6c858f;
+      font-size: 0.85rem;
+    }
+
+    /* subpages (simulate) */
+    .subpage {
+      padding: 80px 0 60px;
+      display: none;
+    }
+    .active-page {
+      display: block;
+    }
+    .page-nav {
+      cursor: pointer;
+    }
+    .breadcrumb {
+      margin-bottom: 32px;
+      font-size: 0.9rem;
+      color: #1F6E8C;
+    }
+    .pricing-grid {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .pricing-card {
+      background: white;
+      border-radius: 32px;
+      padding: 32px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+      flex: 1;
+      min-width: 260px;
+      border: 1px solid #e2edf2;
+      text-align: center;
+    }
+    .pricing-card.popular {
+      border: 2px solid #1F6E8C;
+      background: #fefefe;
+    }
+    .price {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 20px 0;
+    }
+    hr {
+      margin: 20px 0;
+    }
+    .feature-list {
+      text-align: left;
+      margin: 20px 0;
+    }
+    .feature-list li {
+      margin: 12px 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .fa-check-circle {
+      color: #2E8B57;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .container {
+        padding: 0 24px;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+    button, .btn-primary, .btn-outline, .btn-white {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      background: none;
+    }
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <i class="fas fa-chart-line"></i> SalaryOptima
+      </div>
+      <div class="nav-links">
+        <a href="#" class="page-nav" data-page="home">Home</a>
+        <a href="#" class="page-nav" data-page="features-page">Features</a>
+        <a href="#" class="page-nav" data-page="pricing-page">Pricing</a>
+        <a href="#" class="btn-outline" id="loginBtn"><i class="fas fa-lock"></i> Log in</a>
+        <a href="#" class="btn-primary" id="signupBtn">Sign up free →</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HOME PAGE (default) -->
+  <div id="home-page" class="active-page">
+    <div class="container">
+      <!-- hero -->
+      <div class="hero">
+        <div class="hero-content">
+          <div class="hero-badge"><i class="fas fa-leaf"></i> Smart tax optimizer 2025</div>
+          <h1>Maximize your salary, <br> minimize taxes</h1>
+          <p>Get real-time tax breakdown, refund estimates, and salary optimization strategies — trusted by 10,000+ employees & HR teams.</p>
+          <div class="cta-group">
+            <a href="#" class="btn-primary btn-large" id="heroSignup">Get started free</a>
+            <a href="#" class="btn-outline btn-large" id="learnMoreLink">Learn more</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <i class="fas fa-coins"></i>
+          <p style="margin-top: 12px; font-weight: 500;">💰 Smart salary insights</p>
+        </div>
+      </div>
+
+      <!-- features preview -->
+      <div style="text-align: center; margin-top: 30px;">
+        <h2 class="section-title">Why employees love SalaryOptima</h2>
+        <p class="section-desc">Powerful tools that turn complex tax rules into clear savings</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+          <h3>Salary Breakdown</h3>
+          <p>Visualize CTC vs take-home, identify components to restructure.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+          <h3>Tax Refund Estimates</h3>
+          <p>Real-time tax calculator + refund forecast based on investments.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-bell"></i></div>
+          <h3>Smart Notifications</h3>
+          <p>Get alerts for deductions, deadlines, and saving opportunities.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+          <h3>HR & CA Dashboard</h3>
+          <p>For companies: unified compliance, reports, and user management.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- about section (public) -->
+    <div class="container">
+      <div class="about-section">
+        <div class="about-inner">
+          <div class="about-text">
+            <h2>Built for modern professionals & enterprises</h2>
+            <p>SalaryOptima combines AI-driven tax suggestions with an easy dashboard. Whether you are an employee optimizing deductions or an HR managing payroll insights — we simplify the entire journey.</p>
+            <div class="about-stats">
+              <div class="stat">$2.4M <span>total tax saved</span></div>
+              <div class="stat">12k+ <span>active users</span></div>
+              <div class="stat">98% <span>satisfaction</span></div>
+            </div>
+          </div>
+          <div class="about-image">
+            <i class="fas fa-chart-simple"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="container">
+      <div class="cta-banner">
+        <h2>Ready to take control of your salary?</h2>
+        <p>Join thousands of professionals who optimize their take-home and tax refunds every year.</p>
+        <a href="#" class="btn-white" id="ctaSignup">Create free account →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES SUBPAGE (detailed) -->
+  <div id="features-page" class="subpage">
+    <div class="container">
+      <div class="breadcrumb"><i class="fas fa-arrow-left"></i> <a href="#" class="page-nav" data-page="home">Back to Home</a> / Features</div>
+      <h1 class="section-title" style="text-align: left;">All-in-one salary & tax suite</h1>
+      <p class="section-desc" style="text-align: left; margin-left: 0;">Explore the complete toolkit for employees, HR, and Chartered Accountants.</p>
+      
+      <div class="features-grid" style="margin-top: 20px;">
+        <div class="feature-card">
+          <i class="fas fa-user-graduate feature-icon"></i>
+          <h3>Employee Dashboard</h3>
+          <p>Visualize salary components, IT declarations, HRA exemptions, and refund estimates in seconds.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-chart-line feature-icon"></i>
+          <h3>What-if Optimizer</h3>
+          <p>Simulate changes: increase NPS, mutual funds, or restructure allowances and see net salary impact.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-shield-alt feature-icon"></i>
+          <h3>Compliance Hub</h3>
+          <p>Auto-filled tax forms, TDS reconciliation, and audit-ready reports for finance teams.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-chart-bar feature-icon"></i>
+          <h3>Analytics & Reports</h3>
+          <p>Export monthly salary trends, tax liability forecasts, and personalized insights.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-users feature-icon"></i>
+          <h3>HR/Admin Console</h3>
+          <p>Role-based access, user data overview, bulk verification, and payroll integration.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-mobile-alt feature-icon"></i>
+          <h3>Mobile Friendly</h3>
+          <p>Responsive dashboard to manage taxes on the go, with push notifications.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING SUBPAGE (third page: call to action focused) -->
+  <div id="pricing-page" class="subpage">
+    <div class="container">
+      <div class="breadcrumb"><i class="fas fa-arrow-left"></i> <a href="#" class="page-nav" data-page="home">Home</a> / Plans</div>
+      <h2 class="section-title">Simple, transparent pricing</h2>
+      <p class="section-desc">Choose the plan that fits your needs — from individual to enterprise.</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <p>Forever free, core tools</p>
+          <hr>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Salary breakdown</li>
+            <li><i class="fas fa-check-circle"></i> Tax estimate</li>
+            <li><i class="fas fa-check-circle"></i> 1 notification per month</li>
+            <li><i class="fas fa-check-circle"></i> Basic dashboard</li>
+          </ul>
+          <a href="#" class="btn-outline" style="display:inline-block; margin-top:20px;">Get started</a>
+        </div>
+        <div class="pricing-card popular">
+          <h3>Pro <span style="background:#1F6E8C20; font-size:12px; padding:2px 8px; border-radius:30px;">Popular</span></h3>
+          <div class="price">$9<span style="font-size:1rem;">/mo</span></div>
+          <p>Advanced optimization & insights</p>
+          <hr>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Everything in Free</li>
+            <li><i class="fas fa-check-circle"></i> Unlimited notifications & alerts</li>
+            <li><i class="fas fa-check-circle"></i> Tax refund simulator</li>
+            <li><i class="fas fa-check-circle"></i> Priority email support</li>
+            <li><i class="fas fa-check-circle"></i> Investment recommendations</li>
+          </ul>
+          <a href="#" class="btn-primary" style="display:inline-block; margin-top:20px;">Try Pro 14 days</a>
+        </div>
+        <div class="pricing-card">
+          <h3>Enterprise</h3>
+          <div class="price">Custom</div>
+          <p>For companies & HR teams</p>
+          <hr>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Bulk user upload</li>
+            <li><i class="fas fa-check-circle"></i> Admin dashboard & analytics</li>
+            <li><i class="fas fa-check-circle"></i> API integration</li>
+            <li><i class="fas fa-check-circle"></i> Dedicated account manager</li>
+          </ul>
+          <a href="#" class="btn-outline" style="display:inline-block; margin-top:20px;">Contact sales</a>
+        </div>
+      </div>
+      <div style="text-align: center; margin: 48px 0 20px;">
+        <p><i class="fas fa-shield-heart"></i> All plans include bank-level encryption & GDPR compliance.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo" style="font-size: 22px;"><i class="fas fa-chart-line"></i> SalaryOptima</div>
+        <p>Smart salary & tax assistant</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <p><a href="#" class="page-nav" data-page="features-page" style="color:#2c5a6e;">Features</a></p>
+        <p><a href="#" class="page-nav" data-page="pricing-page">Pricing</a></p>
+        <p>Dashboard demo</p>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <p>Help center</p>
+        <p>Tax guides</p>
+        <p>Contact support</p>
+      </div>
+      <div class="footer-col social">
+        <h4>Follow us</h4>
+        <i class="fab fa-linkedin"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2025 SalaryOptima Inc. — Simplify your salary journey. Not financial advice, but smart tools.
+    </div>
+  </div>
+</footer>
+
+<!-- simple page router + demo alerts for signup/login (mimics flow) -->
+<script>
+  // DOM elements
+  const homePage = document.getElementById('home-page');
+  const featuresPage = document.getElementById('features-page');
+  const pricingPage = document.getElementById('pricing-page');
+  const pages = [homePage, featuresPage, pricingPage];
+  
+  function showPage(pageId) {
+    pages.forEach(page => {
+      if (page) page.classList.remove('active-page');
+      if (page && page.id === `${pageId}-page`) {
+        page.classList.add('active-page');
+      } else if (page && page.id === 'home-page' && pageId === 'home') {
+        page.classList.add('active-page');
+      } else if (page && page.id === 'features-page' && pageId === 'features-page') {
+        page.classList.add('active-page');
+      } else if (page && page.id === 'pricing-page' && pageId === 'pricing-page') {
+        page.classList.add('active-page');
+      }
+    });
+    // Also handle subpage display styling
+    if (pageId === 'home') {
+      homePage.classList.add('active-page');
+      featuresPage.classList.remove('active-page');
+      pricingPage.classList.remove('active-page');
+    } else if (pageId === 'features-page') {
+      featuresPage.classList.add('active-page');
+      homePage.classList.remove('active-page');
+      pricingPage.classList.remove('active-page');
+    } else if (pageId === 'pricing-page') {
+      pricingPage.classList.add('active-page');
+      homePage.classList.remove('active-page');
+      featuresPage.classList.remove('active-page');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  
+  // attach event listeners to all .page-nav
+  document.querySelectorAll('.page-nav').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const page = link.getAttribute('data-page');
+      if (page) showPage(page);
+    });
+  });
+  
+  // "Learn more" from hero -> go to features page
+  const learnMore = document.getElementById('learnMoreLink');
+  if(learnMore) {
+    learnMore.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPage('features-page');
+    });
+  }
+  
+  // signup / login buttons: simulate dashboard access alert (since this is public website, we mimic "redirect to dashboard")
+  const signupBtns = [document.getElementById('signupBtn'), document.getElementById('heroSignup'), document.getElementById('ctaSignup')];
+  signupBtns.forEach(btn => {
+    if(btn) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert("✨ Welcome! This is the public-facing website. In a real product, you'd be redirected to the User Dashboard (salary breakdown, tax summary, notifications).\n\n📌 Assignment Module 1 completed: Hero, About, Features, CTA + 2 subpages (Features & Pricing).");
+      });
+    }
+  });
+  
+  const loginBtn = document.getElementById('loginBtn');
+  if(loginBtn) {
+    loginBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert("🔐 Login demo: As part of the Public Website, after login you'd access your personalized salary dashboard with tax summary & notifications (User Dashboard module).");
+    });
+  }
+  
+  // Also handle pricing page CTA
+  const pricingCtAs = document.querySelectorAll('.pricing-card a');
+  pricingCtAs.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert("🚀 Choose plan: Full user dashboard & salary optimization will be unlocked after signup.");
+    });
+  });
+  
+  // initialize: home visible
+  showPage('home');
+</script>
+</body>
+</html>
